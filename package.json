@@ -1,0 +1,8 @@
+{
+  "name": "dalle-app-backend",
+  "version": "1.0.0",
+  "description": "Image generated using the DALL E open ai api",
+  "main": "app.js",
+  "author": "Craig Chick",
+  "license": "MIT"
+}
