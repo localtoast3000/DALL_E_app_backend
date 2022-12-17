@@ -1,2 +1,3 @@
-# PERDU-backend
-Backend of a web application built with Nuxt.js to help find lost items
+# DALL E app
+
+Backend for an image from text generator powerd by DALL E
