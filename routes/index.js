@@ -1,6 +1,6 @@
 import express from 'express';
-import { generateImageFromPrompt } from '../api/open_ai_requests';
-import { validateReqBody } from '../lib/helpers';
+import { generateImageFromPrompt } from '../api/open_ai_requests.js';
+import { validateReqBody } from '../lib/helpers.js';
 const router = express.Router();
 
 router.post('/imagegen', async (req, res) => {
@@ -21,3 +21,5 @@ router.post('/imagegen', async (req, res) => {
     res.json({ result: false, error: 'Failed to generate image' });
   }
 });
+
+export default router;

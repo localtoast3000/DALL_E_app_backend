@@ -1,57 +1,21 @@
-import fetch from 'node-fetch';
+import { fileURLToPath } from 'url';
+import path from 'path';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import dotenv from 'dotenv';
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
+
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPEN_AI_KEY,
 });
 const openai = new OpenAIApi(configuration);
-const urlRoot = `https://api.openai.com/v1`;
-
-function constructURL(endpoint) {
-  return `${urlRoot}${endpoint}`;
-}
 
 export async function generateImageFromPrompt(prompt) {
   const response = await openai.createImage({
     prompt: prompt,
     n: 1,
-    size: '1024x1024',
+    size: '256x256',
   });
-  return await response;
-}
-
-export async function postData(endpoint, data) {
-  const result = await fetch(constructURL(endpoint), {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  const res = await result.json();
-  return res;
-}
-
-export async function updateData(endpoint, data) {
-  const result = await fetch(constructURL(endpoint), {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  const res = await result.json();
-  return res;
-}
-
-export async function deleteData(endpoint, data) {
-  const result = await fetch(constructURL(endpoint), {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  const res = await result.json();
-  return res;
+  return response.data;
 }
