@@ -17,7 +17,7 @@ import chalk from 'chalk';
 // ROUTER IMPORTS
 import indexRouter from './routes/index.js';
 
-const PORT = process.env.PORT || '3000';
+const PORT = process.env.PORT || '8000';
 const STATIC = path.join(__dirname, 'public');
 const app = express();
 

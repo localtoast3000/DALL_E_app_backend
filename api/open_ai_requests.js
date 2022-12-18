@@ -14,8 +14,8 @@ const openai = new OpenAIApi(configuration);
 export async function generateImageFromPrompt(prompt) {
   const response = await openai.createImage({
     prompt: prompt,
-    n: 1,
-    size: '256x256',
+    n: 4,
+    size: '1024x1024',
   });
   return response.data;
 }
